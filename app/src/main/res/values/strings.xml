@@ -3,4 +3,6 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="log_in_button">Log In</string>
+    <string name="Insure_logo">Logo da Insure</string>
+    <string name="Personal_Information">Personal Information</string>
 </resources>
