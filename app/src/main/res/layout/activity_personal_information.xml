@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#989898"
+    android:background="#B8B8B8"
     tools:context=".PersonalInformationActivity">
 
     <ImageView
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/insure" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Personal_Info_Header"
         android:layout_width="246dp"
         android:layout_height="25dp"
         android:includeFontPadding="false"
@@ -34,6 +34,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/Personal_Info_Name"
+        android:layout_width="246dp"
+        android:layout_height="25dp"
+        android:includeFontPadding="false"
+        android:text="@string/Personal_Information_Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
