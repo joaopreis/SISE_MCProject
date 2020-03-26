@@ -1,12 +1,10 @@
 package pt.sise.mc_project;
 
-import java.util.Date;
-
 public class Claim {
     private int _id;
     private String _title;
-    private String _plateNUmber;
-    private Date _date;
+    private String plateNumber;
+    private String _date;
     private String _status;
     private String _description;
 
@@ -23,11 +21,11 @@ public class Claim {
         return _title;
     }
 
-    public String get_plateNUmber() {
-        return _plateNUmber;
+    public String get_plateNumber() {
+        return plateNumber;
     }
 
-    public Date get_date() {
+    public String get_date() {
         return _date;
     }
 
@@ -47,11 +45,11 @@ public class Claim {
         this._title = _title;
     }
 
-    public void set_plateNUmber(String _plateNUmber) {
-        this._plateNUmber = _plateNUmber;
+    public void set_plateNumber(String _plateNUmber) {
+        this.plateNumber = _plateNUmber;
     }
 
-    public void set_date(Date _date) {
+    public void set_date(String _date) {
         this._date = _date;
     }
 

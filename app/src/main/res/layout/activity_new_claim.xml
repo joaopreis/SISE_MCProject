@@ -177,12 +177,12 @@
         app:layout_constraintVertical_bias="0.723" />
 
     <Button
-        android:id="@+id/newClaimBackButton"
+        android:id="@+id/newClaimCancelButton"
         android:layout_width="113dp"
         android:layout_height="44dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
-        android:text="@string/back_button"
+        android:text="@string/cancel_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/newClaimSubmitButton"
         app:layout_constraintHorizontal_bias="0.731"
