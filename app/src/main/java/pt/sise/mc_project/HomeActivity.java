@@ -28,6 +28,10 @@ public class HomeActivity extends AppCompatActivity {
         globalState.set_claimList(_claimList);
 
         final Button profileButton=findViewById(R.id.homePersonalInformationButton);
+        final Button newClaimButton=findViewById(R.id.homeNewClaimButton);
+        final Button claimsInformationButton=findViewById(R.id.homeClaimsInformationButton);
+        final Button settingsButton=findViewById(R.id.homeSettingsButton);
+
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        final Button newClaimButton=findViewById(R.id.homeNewClaimButton);
+
         newClaimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,15 +51,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        final Button claimsInformationButton=findViewById(R.id.homeClaimsInformationButton);
+
         claimsInformationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("SISE","Claims Information Button Clicked.");
+                Intent intent=new Intent(HomeActivity.this,ClaimHistoryActivity.class);
+                startActivity(intent);
             }
         });
 
-        final Button settingsButton=findViewById(R.id.homeSettingsButton);
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,12 +79,7 @@ public class HomeActivity extends AppCompatActivity {
                     String plateNumber=data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE_NUMBER);
                     String claimDate=data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DATE);
                     String claimDescription=data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
-                    Claim claim= new Claim(1,claimTitle);
-                    claim.set_date(claimDate);
-                    claim.set_plateNumber(plateNumber);
-                    claim.set_date(claimDate);
-                    claim.set_description(claimDescription);
-                    claim.set_status("Submitted");
+                    Claim claim= new Claim(1,claimTitle,plateNumber,claimDate,"Submitted",claimDescription);
                     _claimList.add(claim);
 
                 }else if (resultCode==Activity.RESULT_CANCELED){

@@ -3,23 +3,26 @@
     package="pt.sise.mc_project">
 
     <application
-        android:name="pt.sise.mc_project.GlobalState"
+        android:name=".GlobalState"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewClaimActivity"></activity>
-        <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".ClaimHistoryActivity"></activity>
+        <activity android:name=".SettingsActivity">
         </activity>
-        <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".PersonalInformationActivity"></activity>
+        <activity android:name=".NewClaimActivity" />
+        <activity android:name=".HomeActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".PersonalInformationActivity" />
         <activity android:name=".InitializationActivity" />
     </application>
 

@@ -16,11 +16,24 @@
     <string name="claims_information">Claims Information</string>
     <string name="settings">Settings</string>
     <string name="personal_information_name">Name</string>
+    <string name="personal_information_birthdate">Birthdate</string>
+    <string name="personal_information_fiscalNumber">Fiscal Number</string>
+    <string name="personal_information_address">Address</string>
+    <string name="personal_information_insurancePolicyNumber">Insurance Policy Number</string>
     <string name="new_claim_title">Title</string>
     <string name="plate_number">Plate Number</string>
     <string name="new_claim_date">Occurrence Date</string>
     <string name="claim_description">Description</string>
+    <string name="select_claim">Select a claim for more detailed information</string>
+    <string name="settings_account_details">Account Details</string>
+    <string name="settings_about_us">About Us</string>
+    <string name="settings_terms_and_conditions">Terms and Conditions</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_website">Insure.com</string>
+    <string name="settings_log_out">Log Out</string>
     <string name="cancel_button">Cancel</string>
     <string name="submit_button">Submit</string>
+    <string name="back_button">Back</string>
+    <string name="edit_button">Edit</string>
 
 </resources>
