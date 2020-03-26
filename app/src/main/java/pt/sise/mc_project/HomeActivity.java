@@ -14,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Log.d("SISE","Home Activity Created.");
 
         final Button profileButton=findViewById(R.id.homePersonalInformationButton);
         profileButton.setOnClickListener(new View.OnClickListener() {

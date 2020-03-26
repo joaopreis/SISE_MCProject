@@ -13,6 +13,7 @@ public class NewClaimActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_claim);
+        Log.d("SISE","New Claim Activity Created.");
 
         final Button backButton=findViewById(R.id.newClaimBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
