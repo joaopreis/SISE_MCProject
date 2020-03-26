@@ -3,8 +3,17 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="log_in_button">Log In</string>
-    <string name="Insure_logo">Logo da Insure</string>
+    <string name="insure_logo">Logo da Insure</string>
+    <string name="personal_information_logo">Personal Information Logo</string>
+    <string name="new_claim_logo">New Claim Logo </string>
+    <string name="claims_information_logo">Claims Information Logo</string>
+    <string name="settings_logo">Settings Logo</string>
     <string name="home_title">Welcome to InSure Mobile App</string>
-    <string name="Personal_Information">Personal Information</string>
-    <string name="Personal_Information_Name">Name</string>
+    <string name="home">Home</string>
+    <string name="copyright">Copyright Group 6 SISE</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="new_claim">New Claim</string>
+    <string name="claims_information">Claims Information</string>
+    <string name="settings">Settings</string>
+    <string name="personal_information_name">Name</string>
 </resources>
