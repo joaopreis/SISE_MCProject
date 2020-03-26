@@ -2,6 +2,7 @@ package pt.sise.mc_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ public class NewClaimActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("SISE","Back Button Clicked.");
+                Intent intent=new Intent(NewClaimActivity.this,HomeActivity.class);
+                startActivityForResult(intent,1);
             }
         });
 

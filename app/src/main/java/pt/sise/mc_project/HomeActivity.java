@@ -2,6 +2,7 @@ package pt.sise.mc_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("SISE","New Claim Button Clicked.");
+                Intent intent=new Intent(HomeActivity.this,NewClaimActivity.class);
+                startActivityForResult(intent,1);
             }
         });
 
