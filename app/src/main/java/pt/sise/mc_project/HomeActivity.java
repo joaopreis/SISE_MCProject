@@ -22,6 +22,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("SISE","Profile Button Clicked.");
+                Intent intent=new Intent(HomeActivity.this,PersonalInformationActivity.class);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -31,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("SISE","New Claim Button Clicked.");
                 Intent intent=new Intent(HomeActivity.this,NewClaimActivity.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent,InternalProtocol.NEW_CLAIM_REQUEST);
             }
         });
 
