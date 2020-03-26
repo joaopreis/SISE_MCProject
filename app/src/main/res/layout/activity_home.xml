@@ -8,93 +8,123 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="190dp"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
+        android:baselineAlignBottom="false"
+        android:clickable="false"
+        android:contentDescription="@string/insure_logo"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016"
+        app:srcCompat="@drawable/insure" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="211dp"
+        android:layout_height="62dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="@string/home_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="190dp"
-                android:layout_height="62dp"
-                android:layout_gravity="center"
-                android:baselineAlignBottom="false"
-                android:clickable="false"
-                android:contentDescription="@string/insure_logo"
-                android:foregroundGravity="center"
-                app:srcCompat="@drawable/insure" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="16dp"
+        android:foregroundGravity="center_horizontal"
+        android:text="@string/home"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/homePersonalInformationButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="211dp"
-                android:layout_height="62dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/home_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-        </LinearLayout>
+    <Button
+        android:id="@+id/homePersonalInformationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginRight="109dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="@string/personal_information"
+        app:layout_constraintBottom_toTopOf="@+id/homeNewClaimButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:foregroundGravity="center_horizontal"
-            android:text="@string/home"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <Button
+        android:id="@+id/homeNewClaimButton"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:text="@string/new_claim"
+        app:layout_constraintBottom_toTopOf="@+id/homeClaimsInformationButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="373dp"
-            android:gravity="center"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/homeClaimsInformationButton"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:text="@string/claims_information"
+        app:layout_constraintBottom_toTopOf="@+id/homeSettingsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/homePersonalInformationButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:text="@string/personal_information" />
+    <Button
+        android:id="@+id/homeSettingsButton"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="172dp"
+        android:text="@string/settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/homeNewClaimButton"
-                android:layout_width="194dp"
-                android:layout_height="wrap_content"
-                android:text="@string/new_claim" />
-
-            <Button
-                android:id="@+id/homeClaimsInformationButton"
-                android:layout_width="194dp"
-                android:layout_height="wrap_content"
-                android:text="@string/claims_information" />
-
-            <Button
-                android:id="@+id/homeSettingsButton"
-                android:layout_width="194dp"
-                android:layout_height="wrap_content"
-                android:text="@string/settings" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="bottom|center"
-            android:text="@string/copyright" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginRight="133dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="bottom|center"
+        android:text="@string/copyright"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
