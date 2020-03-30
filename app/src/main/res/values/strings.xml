@@ -24,6 +24,8 @@
     <string name="plate_number">Plate Number</string>
     <string name="new_claim_date">Occurrence Date</string>
     <string name="claim_description">Description</string>
+    <string name="claim_id">ID</string>
+    <string name="claim_state">State</string>
     <string name="select_claim">Select a claim for more detailed information</string>
     <string name="settings_account_details">Account Details</string>
     <string name="settings_about_us">About Us</string>

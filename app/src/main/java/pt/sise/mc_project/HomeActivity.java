@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("SISE","Profile Button Clicked.");
                 Intent intent=new Intent(HomeActivity.this,PersonalInformationActivity.class);
-                startActivityForResult(intent,1);
+                startActivity(intent);
             }
         });
 

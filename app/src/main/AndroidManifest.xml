@@ -11,8 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ClaimHistoryActivity"></activity>
-        <activity android:name=".SettingsActivity">
-        </activity>
+        <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".NewClaimActivity" />
         <activity android:name=".HomeActivity">
         <intent-filter>
@@ -24,6 +23,7 @@
         <activity android:name=".LogInActivity" />
         <activity android:name=".PersonalInformationActivity" />
         <activity android:name=".InitializationActivity" />
+        <activity android:name=".ClaimInformationActivity" />
     </application>
 
 </manifest>

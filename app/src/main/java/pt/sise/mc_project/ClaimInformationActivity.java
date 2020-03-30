@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +19,8 @@ public class ClaimInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_claim_information);
 
         // set up the listener of the back button
-        final Button buttonDone = (Button) findViewById(R.id.claim_info_btn_back);
-        buttonDone.setOnClickListener(new View.OnClickListener() {
+        final Button buttonOk = (Button) findViewById(R.id.claimInformationOkButton);
+        buttonOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // just finish the current activity
                 finish();
@@ -32,28 +33,33 @@ public class ClaimInformationActivity extends AppCompatActivity {
             finish();
             return;
         }
-        //int index = extras.getInt(InternalProtocol.READ_Claim_INDEX);
-        //Log.d(InternalProtocol.LOG, "Index:" + index);
 
-       // // obtain a reference to the claim's data structure
-       // GlobalState context = (GlobalState) getApplicationContext();
-       // Claim claim = context.get_claimList().get(index);
+        int index = extras.getInt(InternalProtocol.READ_CLAIM_INDEX);
+        Log.d(InternalProtocol.LOG, "Index:" + index);
 
-       // // update the UI
-        //TextView claimIDTextView = (TextView) findViewById(R.id.space_Claim_id);
-       // claimIDTextView.setText(claim.getClaim_ID());
+        // obtain a reference to the claim's data structure
+        GlobalState context = (GlobalState) getApplicationContext();
+        Claim claim = context.get_claimList().get(index);
 
-       // TextView ClaimStatusTextView = (TextView) findViewById(R.id.space_Status);
-       // ClaimStatusTextView.setText(claim.getStatus());
+        //update the UI
+        TextView claimIDTextView = (TextView) findViewById(R.id.claimID);
+        Log.d(InternalProtocol.LOG, "ID:" + claim.get_id());
+        claimIDTextView.setText(claim.get_id());
 
-        //TextView ClaimTitleTextView = (TextView) findViewById(R.id.space_title);
-      //  ClaimStatusTextView.setText(claim.getTitle());
+        TextView ClaimStatusTextView = (TextView) findViewById(R.id.claimState);
+        ClaimStatusTextView.setText(claim.get_status());
 
-       // TextView ClaimPlateNumberTextView = (TextView) findViewById(R.id.number_Plate_number);
-       // ClaimStatusTextView.setText(claim.getPlate_number());
+        TextView ClaimTitleTextView = (TextView) findViewById(R.id.claimTitle);
+        ClaimTitleTextView.setText(claim.get_title());
 
-       // TextView ClaimDateTextView = (TextView) findViewById(R.id.date_occurence_date);
-       // ClaimStatusTextView.setText((CharSequence) claim.getOccurence_date());
+        TextView ClaimPlateNumberTextView = (TextView) findViewById(R.id.plateNumber);
+        ClaimPlateNumberTextView.setText(claim.get_plateNumber());
+
+        TextView ClaimDateTextView = (TextView) findViewById(R.id.claimDate);
+        ClaimDateTextView.setText((CharSequence) claim.get_date());
+
+        TextView ClaimDescrTextView = (TextView) findViewById(R.id.claimDescription);
+        ClaimDescrTextView.setText((CharSequence) claim.get_date());
 
 
 
