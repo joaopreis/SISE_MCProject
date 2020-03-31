@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".app.activities.HomeActivity">
 
     <ImageView
         android:id="@+id/imageView6"

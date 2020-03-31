@@ -4,15 +4,17 @@ import android.app.Application;
 
 import java.util.ArrayList;
 
+import pt.sise.mc_project.datamodel.ClaimItem;
+
 public class GlobalState extends Application {
 
-    private ArrayList<Claim> _claimList;
+    private ArrayList<ClaimItem> _claimItemList;
 
-    public void set_claimList(ArrayList<Claim> _claimList) {
-        this._claimList = _claimList;
+    public void set_claimItemList(ArrayList<ClaimItem> _claimItemList) {
+        this._claimItemList = _claimItemList;
     }
 
-    public ArrayList<Claim> get_claimList() {
-        return _claimList;
+    public ArrayList<ClaimItem> get_claimItemList() {
+        return _claimItemList;
     }
 }

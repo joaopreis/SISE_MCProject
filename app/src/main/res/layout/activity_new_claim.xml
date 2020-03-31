@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".app.activities.HomeActivity">
 
     <ImageView
         android:id="@+id/imageView6"
@@ -63,7 +63,7 @@
         android:id="@+id/textView2"
         android:layout_width="146dp"
         android:layout_height="37dp"
-        android:text="@string/new_claim_title"
+        android:text="@string/claim_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,7 +105,7 @@
         android:id="@+id/textView5"
         android:layout_width="185dp"
         android:layout_height="34dp"
-        android:text="@string/new_claim_date"
+        android:text="@string/claim_date"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

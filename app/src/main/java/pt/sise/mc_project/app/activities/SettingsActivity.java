@@ -1,4 +1,4 @@
-package pt.sise.mc_project;
+package pt.sise.mc_project.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Set;
+import pt.sise.mc_project.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    tools:context=".LogInActivity">
+    tools:context=".app.activities.LogInActivity">
 
     <TextView
         android:id="@+id/textView12"
@@ -38,13 +38,13 @@
             android:contentDescription="@string/insure_logo"
             app:srcCompat="@drawable/insure" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
