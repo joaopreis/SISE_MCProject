@@ -66,6 +66,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("SISE","Settings Button Clicked.");
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                startActivity(intent);
             }
         });
         }
