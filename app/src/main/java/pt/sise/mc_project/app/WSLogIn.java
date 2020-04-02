@@ -1,15 +1,7 @@
 package pt.sise.mc_project.app;
 
-import android.app.Application;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
-
-import pt.sise.mc_project.R;
-import pt.sise.mc_project.app.activities.HomeActivity;
-import pt.sise.mc_project.app.activities.LogInActivity;
 
 public class WSLogIn  extends AsyncTask<String, String, Integer> {
 

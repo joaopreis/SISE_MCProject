@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
+import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.R;
 import pt.sise.mc_project.app.WSLogIn;
 
@@ -22,6 +23,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button logInButton;
+    private int _sessionId;
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -58,6 +60,8 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         Log.d("SISE","Log In Created!");
 
+        final GlobalState globalState = (GlobalState) getApplicationContext();
+
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         logInButton= (Button) findViewById(R.id.log_in_button);
@@ -82,6 +86,8 @@ public class LogInActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(logInButton.getContext(),"Log In successful!",Toast.LENGTH_LONG).show();
                         Intent intent=new Intent(LogInActivity.this, HomeActivity.class);
+                        _sessionId=id;
+                        globalState.set_sessionId(_sessionId);
                         startActivity(intent);
                     }
                 } catch (ExecutionException e) {

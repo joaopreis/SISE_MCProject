@@ -1,6 +1,8 @@
 package pt.sise.mc_project.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pt.sise.mc_project.datamodel.ClaimItem;
 import pt.sise.mc_project.GlobalState;
@@ -28,7 +31,7 @@ public class ClaimsHistoryActivity extends AppCompatActivity {
 
         // get the claim list in the application domain
         GlobalState globalState = (GlobalState) getApplicationContext();
-        ArrayList<ClaimItem> _claimItemList =globalState.get_claimItemList();
+        List<ClaimItem> _claimItemList =globalState.get_claimItemList();
 
 
         // assign adapter to list view

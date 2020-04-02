@@ -57,14 +57,13 @@
         android:id="@+id/Personal_Info_Name"
         android:layout_width="146dp"
         android:layout_height="37dp"
+        android:layout_marginTop="36dp"
         android:includeFontPadding="false"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157"
+        app:layout_constraintTop_toBottomOf="@+id/imageInsureLogo"
         tools:text="@string/personal_information_name"
         tools:visibility="visible" />
 
@@ -76,7 +75,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Personal_Info_Name"
         app:layout_constraintVertical_bias="0.0" />
@@ -163,19 +162,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.626" />
 
-    <TextView
-        android:id="@+id/claimDescription"
-        android:layout_width="357dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInsurancePolicyNumber"
-        app:layout_constraintVertical_bias="0" />
-
     <Button
         android:id="@+id/personalInformationBackButton"
         android:layout_width="113dp"
@@ -198,6 +184,18 @@
         android:layout_marginLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <TextView
+        android:id="@+id/personalInformationPolicyNumber"
+        android:layout_width="350dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="196dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInsurancePolicyNumber"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

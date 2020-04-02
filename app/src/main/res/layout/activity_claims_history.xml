@@ -53,23 +53,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.151" />
 
-    <LinearLayout
-        android:layout_width="353dp"
+    <ListView
+        android:id="@+id/claimsList"
+        style="@style/Widget.AppCompat.ListView"
+        android:layout_width="351dp"
         android:layout_height="361dp"
-        android:layout_marginBottom="224dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ListView
-            android:id="@+id/claimsList"
-            style="@style/Widget.AppCompat.ListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:isScrollContainer="true"
-            android:visibility="visible" />
-    </LinearLayout>
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="12dp"
+        android:isScrollContainer="true"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/claimsHistoryBackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.273" />
 
     <Button
         android:id="@+id/claimsHistoryBackButton"
