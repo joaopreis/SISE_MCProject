@@ -16,6 +16,8 @@ public class InternalProtocol {
     public static final String KEY_NEW_CLAIM_DATE  = "CLAIM_DATE";
     public static final String KEY_NEW_CLAIM_DESCRIPTION  = "CLAIM_DESCRIPTION";
 
+    public static final int CLAIM_INFORMATION_REQUEST  = 3;
+
     // relevant for the claim information activity
     public static final String READ_CLAIM_INDEX    = "CLAIM_INDEX";
 

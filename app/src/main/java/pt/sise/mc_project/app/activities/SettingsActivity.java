@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
                     boolean result=new WSLogOut(_sessionId).execute().get();
                     if(result){
                         Intent intent = new Intent();
-                        Toast.makeText(getApplicationContext(),"Log out successful",Toast.LENGTH_LONG);
+                        Toast.makeText(getApplicationContext(),"Log out successful",Toast.LENGTH_LONG).show();
                         setResult(Activity.RESULT_OK);
                         finish();
                     }

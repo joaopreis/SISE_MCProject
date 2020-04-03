@@ -20,12 +20,14 @@
     <string name="personal_information_fiscalNumber">Fiscal Number</string>
     <string name="personal_information_address">Address</string>
     <string name="personal_information_insurancePolicyNumber">Insurance Policy Number</string>
+    <string name="claims_list">Claims List</string>
     <string name="claim_title">Title</string>
     <string name="plate_number">Plate Number</string>
     <string name="claim_date">Occurrence Date</string>
     <string name="claim_description">Description</string>
     <string name="claim_id">ID</string>
     <string name="claim_state">State</string>
+    <string name="claims_submission">Submission Date</string>
     <string name="select_claim">Select a claimItem for more detailed information</string>
     <string name="settings_account_details">Account Details</string>
     <string name="settings_about_us">About Us</string>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,14 +48,12 @@ public class ClaimsHistoryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // create the claim information activity, passing to it the index position as parameter
                 Log.d("position", position + "");
-                Intent intent = new Intent(ClaimsHistoryActivity.this, NewClaimActivity.class);
+                Intent intent = new Intent(ClaimsHistoryActivity.this, ClaimInformationActivity.class);
                 intent.putExtra(InternalProtocol.READ_CLAIM_INDEX, position);
-                startActivity(intent);
+                startActivityForResult(intent,InternalProtocol.CLAIM_INFORMATION_REQUEST);
             }
 
         });
-
-
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +63,17 @@ public class ClaimsHistoryActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch(requestCode){
+            case InternalProtocol.CLAIM_INFORMATION_REQUEST:
+                if (resultCode== Activity.RESULT_CANCELED){
+                    finish();
+                }
 
+        }
 
     }
 }
