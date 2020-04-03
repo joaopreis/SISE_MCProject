@@ -34,7 +34,6 @@ public class ClaimsHistoryActivity extends AppCompatActivity {
         GlobalState globalState = (GlobalState) getApplicationContext();
         List<ClaimItem> _claimItemList =globalState.get_claimItemList();
 
-
         // assign adapter to list view
         ListView _listView = (ListView) findViewById(R.id.claimsList);
         ArrayAdapter<ClaimItem> adapter = new ArrayAdapter<>(this,
@@ -72,8 +71,6 @@ public class ClaimsHistoryActivity extends AppCompatActivity {
                 if (resultCode== Activity.RESULT_CANCELED){
                     finish();
                 }
-
         }
-
     }
 }

@@ -13,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.activities.ClaimInformationActivity"></activity>
+        <activity android:name=".app.activities.PrivacyPolicyActivity"></activity>
+        <activity android:name=".app.activities.AssistanceActivity" />
+        <activity android:name=".app.activities.TermsAndConditionsActivity" />
+        <activity android:name=".app.activities.ClaimInformationActivity" />
         <activity android:name=".app.activities.ClaimsHistoryActivity" />
         <activity android:name=".app.activities.SettingsActivity" />
         <activity android:name=".app.activities.NewClaimActivity" />
-        <activity android:name=".app.activities.HomeActivity"></activity>
+        <activity android:name=".app.activities.HomeActivity" />
         <activity android:name=".app.activities.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

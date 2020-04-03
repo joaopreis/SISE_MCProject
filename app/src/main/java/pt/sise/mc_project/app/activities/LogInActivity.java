@@ -96,10 +96,12 @@ public class LogInActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                username.setText("");
+                password.setText("");
+
             Log.d("SISE","Log In Button Clicked.");
             Log.d("SISE",username.getText().toString());
             Log.d("SISE",password.getText().toString());
-
             }
         });
 

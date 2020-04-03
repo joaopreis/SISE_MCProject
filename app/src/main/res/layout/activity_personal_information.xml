@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     tools:context=".app.activities.PersonalInformationActivity">
@@ -54,30 +55,16 @@
         app:layout_constraintVertical_bias="0.016" />
 
     <TextView
-        android:id="@+id/Personal_Info_Name"
-        android:layout_width="146dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="36dp"
-        android:includeFontPadding="false"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageInsureLogo"
-        tools:text="@string/personal_information_name"
-        tools:visibility="visible" />
-
-    <TextView
         android:id="@+id/personalInfoName"
         android:layout_width="360dp"
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Personal_Info_Name"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -196,6 +183,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewInsurancePolicyNumber"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="116dp"
+        android:layout_height="32dp"
+        android:text="@string/personal_information_name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.165" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

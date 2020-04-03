@@ -163,9 +163,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             default:
                 Log.d(InternalProtocol.LOG, "Internal error: unknown intent message.");
-
         }
-
     }
 }
 
