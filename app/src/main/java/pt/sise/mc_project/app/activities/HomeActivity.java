@@ -80,8 +80,6 @@ public class HomeActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 

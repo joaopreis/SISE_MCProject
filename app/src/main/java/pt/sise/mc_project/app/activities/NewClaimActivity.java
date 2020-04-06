@@ -1,17 +1,25 @@
 package pt.sise.mc_project.app.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,6 +32,8 @@ import pt.sise.mc_project.app.WSListPlates;
 
 public class NewClaimActivity extends AppCompatActivity {
 
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListenerDisplayDate;
     String _plateNumber;
 
     @Override
@@ -63,21 +73,34 @@ public class NewClaimActivity extends AppCompatActivity {
             }
         });
 
-        final EditText editClaimDate=findViewById(R.id.claimDate);
         final EditText editClaimDescription=findViewById(R.id.claimDescription);
 
 
-
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        mDisplayDate = (TextView) findViewById(R.id.claimDate);
+        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                Log.d("SISE","Back Button Clicked.");
-                setResult(Activity.RESULT_CANCELED);
-                finish();
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month= cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(NewClaimActivity.this,android.R.style.Theme_Black, mDateSetListenerDisplayDate, year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
             }
         });
 
-
+        mDateSetListenerDisplayDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month +1;
+                String date = month +"/" + dayOfMonth + "/" + year;
+                mDisplayDate.setText(date);
+            }
+        };
+        
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +108,7 @@ public class NewClaimActivity extends AppCompatActivity {
                 Log.d("SISE","Submit Button Clicked.");
                 String claimTitle=editClaimTitle.getText().toString();
                 Log.d("SISE",_plateNumber);
-                String claimDate=editClaimDate.getText().toString();
+                String claimDate=mDisplayDate.getText().toString();
                 String claimDescription=editClaimDescription.getText().toString();
 
                 if (claimDate.equals("")||claimDescription.equals("")||claimTitle.equals("")||_plateNumber.equals("")){
@@ -101,10 +124,17 @@ public class NewClaimActivity extends AppCompatActivity {
                 resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION,claimDescription);
                 setResult(Activity.RESULT_OK,resultIntent);
                 finish();
-
-
-
             }
         });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("SISE","Back Button Clicked.");
+                setResult(Activity.RESULT_CANCELED);
+                finish();
+            }
+        });
+
     }
 }
