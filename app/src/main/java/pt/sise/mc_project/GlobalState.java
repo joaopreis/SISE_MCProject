@@ -12,6 +12,16 @@ public class GlobalState extends Application {
     private List<ClaimItem> _claimItemList;
     private int _sessionId;
 
+    public String get_username() {
+        return _username;
+    }
+
+    public void set_username(String _username) {
+        this._username = _username;
+    }
+
+    private String _username;
+
     public int get_sessionId(){
         return this._sessionId;
     }

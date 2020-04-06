@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -27,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private List<ClaimItem> _claimItemList;
     private int _sessionId;
+    private String _username;
     private GlobalState globalState;
 
 
@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Get the sessionId of the customer
         _sessionId = globalState.get_sessionId();
+        _username=globalState.get_username();
         try {
             _claimItemList = new WSListClaims(_sessionId).execute().get();
         } catch (ExecutionException e) {
@@ -66,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
                 try {
 
                     Log.d("SISE", _sessionId + "");
-                    Customer customer = new WSCustomerInfo(_sessionId).execute().get();
+                    Customer customer = new WSCustomerInfo(_sessionId,_username,HomeActivity.this).execute().get();
                     Log.d("SISE", customer.toString());
                     Intent intent = new Intent(HomeActivity.this, PersonalInformationActivity.class);
                     intent.putExtra(InternalProtocol.CUSTOMER_NAME, customer.getName());

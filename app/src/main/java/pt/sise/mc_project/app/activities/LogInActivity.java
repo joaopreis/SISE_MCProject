@@ -88,6 +88,7 @@ public class LogInActivity extends AppCompatActivity {
                         Intent intent=new Intent(LogInActivity.this, HomeActivity.class);
                         _sessionId=id;
                         globalState.set_sessionId(_sessionId);
+                        globalState.set_username(username.getText().toString());
                         startActivity(intent);
                     }
                 } catch (ExecutionException e) {
