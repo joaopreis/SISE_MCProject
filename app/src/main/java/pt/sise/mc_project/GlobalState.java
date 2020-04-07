@@ -13,7 +13,7 @@ import pt.sise.mc_project.datamodel.ClaimUnprocessed;
 public class GlobalState extends Application {
 
     private List<ClaimItem> _claimItemList;
-    private List<ClaimUnprocessed> _ClaimUnprocessedList;
+    private List<ClaimUnprocessed> _ClaimUnprocessedList= new ArrayList<ClaimUnprocessed>();
     private int _sessionId;
 
     public String get_username() {

@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
                             }
                             globalState.set_claimItemList(_claimItemList);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Claim not submitted. Waiting for server Validation", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Claim not submitted. Waiting for server validation.", Toast.LENGTH_LONG).show();
                         }
                     } catch (ExecutionException e) {
                         e.printStackTrace();

@@ -131,6 +131,7 @@ public class NewClaimActivity extends AppCompatActivity {
                 resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DATE,claimDate);
                 resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION,claimDescription);
                 setResult(Activity.RESULT_OK,resultIntent);
+                Log.d("SISE","Tou aqui.");
                 finish();
             }
         });
