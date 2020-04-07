@@ -25,6 +25,6 @@ public class WSLogOut extends AsyncTask<String, String, Boolean> {
             Log.d(TAG, e.toString());
             publishProgress("failed.\n");
         }
-        return null;
+        return false;
     }
 }

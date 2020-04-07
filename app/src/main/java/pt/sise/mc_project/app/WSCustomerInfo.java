@@ -62,7 +62,6 @@ public class WSCustomerInfo extends AsyncTask<String, Integer, Customer> {
                 return jsonCustomer;
             }catch (Exception a){
                 return null;
-
             }
         }
     }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import pt.sise.mc_project.datamodel.ClaimItem;
 import pt.sise.mc_project.datamodel.ClaimRecord;
+import pt.sise.mc_project.datamodel.ClaimUnprocessed;
 import pt.sise.mc_project.datamodel.Customer;
 import pt.sise.mc_project.datamodel.Person;
 
@@ -144,5 +145,41 @@ public class JsonCodec {
         }
         Log.i(TAG, "encodeClaimList:" + jsonClaimList.toString());
         return jsonClaimList.toString();
+    }
+
+    public static List<ClaimUnprocessed> decodeClaimUnprocessed(String jsonResult) {
+        ArrayList<ClaimUnprocessed> claimUnprocessedList = null;
+        Log.i(TAG, "decodeClaimList:" + jsonResult);
+        try {
+            JSONArray jsonArray = new JSONArray(jsonResult);
+            claimUnprocessedList = new ArrayList<>();
+            for(int i=0; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String claimTitle = jsonObject.optString("claimTitle");
+                String claimDescription = jsonObject.optString("claimDescription");
+                String claimDate = jsonObject.optString("claimDate");
+                String claimPlateNumber = jsonObject.optString("claimPlateNumber");
+                claimUnprocessedList.add(new ClaimUnprocessed(claimTitle, claimDate, claimPlateNumber, claimDescription));
+            }
+        }  catch (JSONException e) {
+            Log.d(TAG, "decodeClaimList:" + jsonResult);
+        }
+        return claimUnprocessedList;
+    }
+
+    public static String encodeClaimUnprocessed(List<ClaimUnprocessed> claimUnprocessedList) throws Exception {
+        if (claimUnprocessedList == null) return "";
+        JSONArray jsonClaimUnprocessed = new JSONArray();
+        for (int i = 0; i < claimUnprocessedList.size(); i++) {
+            ClaimUnprocessed c = claimUnprocessedList.get(i);
+            JSONObject jsonClaim = new JSONObject();
+            jsonClaim.put("claimTitle", c.get_title());
+            jsonClaim.put("claimDate", c.get_date());
+            jsonClaim.put("claimPlateNumber", c.get_plateNumber());
+            jsonClaim.put("claimDescription", c.get_description());
+            jsonClaimUnprocessed.put(jsonClaim);
+        }
+        Log.i(TAG, "encodeClaimUnprocessed:" + jsonClaimUnprocessed.toString());
+        return jsonClaimUnprocessed.toString();
     }
 }

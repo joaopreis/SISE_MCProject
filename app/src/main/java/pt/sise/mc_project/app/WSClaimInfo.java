@@ -23,7 +23,6 @@ public class WSClaimInfo extends AsyncTask<String, String, ClaimRecord> {
         this._claimId=claimId;
         this._username=username;
         this._claimInformationActivity=claimInformationActivity;
-
     }
 
     @Override
@@ -43,7 +42,6 @@ public class WSClaimInfo extends AsyncTask<String, String, ClaimRecord> {
                 return jsonClaimRecord;
             }catch (Exception a){
                 return null;
-
             }
         }
     }

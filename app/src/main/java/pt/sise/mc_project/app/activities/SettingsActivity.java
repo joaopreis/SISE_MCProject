@@ -52,13 +52,14 @@ public class SettingsActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Log out successful",Toast.LENGTH_LONG).show();
                         setResult(Activity.RESULT_OK);
                         finish();
+                    }else{
+                        finish(); ////// para alterar após tirar dúvida com o prof
                     }
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         });
 

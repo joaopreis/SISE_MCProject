@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import pt.sise.mc_project.JsonCodec;
+import pt.sise.mc_project.JsonFileManager;
 import pt.sise.mc_project.app.WSCustomerInfo;
 import pt.sise.mc_project.app.WSListClaims;
 import pt.sise.mc_project.app.WSNewClaim;
@@ -23,6 +25,7 @@ import pt.sise.mc_project.datamodel.ClaimItem;
 import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.InternalProtocol;
 import pt.sise.mc_project.R;
+import pt.sise.mc_project.datamodel.ClaimUnprocessed;
 import pt.sise.mc_project.datamodel.Customer;
 
 public class HomeActivity extends AppCompatActivity {
@@ -32,22 +35,43 @@ public class HomeActivity extends AppCompatActivity {
     private String _username;
     private GlobalState globalState;
 
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Log.d("SISE", "Home Activity Created.");
 
-
-        // place the claim list in the application domain
-
+        /* place the claim list in the application domain */
         globalState = (GlobalState) getApplicationContext();
 
-        //Get the sessionId of the customer
+        /* Get the sessionId and the username of the customer */
         _sessionId = globalState.get_sessionId();
-        _username=globalState.get_username();
+        _username = globalState.get_username();
+
+        //
+        final Button profileButton = findViewById(R.id.homePersonalInformationButton);
+        final Button newClaimButton = findViewById(R.id.homeNewClaimButton);
+        final Button claimsInformationButton = findViewById(R.id.homeClaimsInformationButton);
+        final Button settingsButton = findViewById(R.id.homeSettingsButton);
+        //final ProgressBar pb= (ProgressBar) findViewById(R.id.homeProgressBar);
+
+        // Process Claims
+        String claimUnprocessedFile = "ClaimUnprocessed"+ _username + ".json";
+        try {
+            String claimUnprocessedJson = JsonFileManager.jsonReadFromFile(HomeActivity.this,claimUnprocessedFile);
+            List<ClaimUnprocessed> JsonclaimUnprocessed = JsonCodec.decodeClaimUnprocessed(claimUnprocessedJson);
+            for (int i=0; i<JsonclaimUnprocessed.size(); i++){
+                ClaimUnprocessed claimUnpr = JsonclaimUnprocessed.get(i);
+                new WSNewClaim(claimUnpr.get_title(),claimUnpr.get_date(),claimUnpr.get_plateNumber(), claimUnpr.get_description(),_sessionId, globalState, HomeActivity.this).execute();
+            }
+            HomeActivity.this.deleteFile(claimUnprocessedFile);
+            Toast.makeText(getApplicationContext(), "Your previous claims have been submitted!.", Toast.LENGTH_LONG).show();
+        }catch (Exception e){
+            Log.d("SISE", "onCreate: No claims to process!");
+        }
+
+        // List of claims is generated as soon as the HomeActivity is created
         try {
             _claimItemList = new WSListClaims(_sessionId).execute().get();
         } catch (ExecutionException e) {
@@ -57,13 +81,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         globalState.set_claimItemList(_claimItemList);
 
-
-
-        final Button profileButton = findViewById(R.id.homePersonalInformationButton);
-        final Button newClaimButton = findViewById(R.id.homeNewClaimButton);
-        final Button claimsInformationButton = findViewById(R.id.homeClaimsInformationButton);
-        final Button settingsButton = findViewById(R.id.homeSettingsButton);
-        //final ProgressBar pb= (ProgressBar) findViewById(R.id.homeProgressBar);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
                     String claimDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DATE);
                     String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESCRIPTION);
                     try {
-                        boolean result = new WSNewClaim(claimTitle, claimDate, plateNumber, claimDescription, _sessionId).execute().get();
+                        boolean result = new WSNewClaim(claimTitle, claimDate, plateNumber, claimDescription, _sessionId, globalState, HomeActivity.this).execute().get();
                         if (result) {
                             Toast.makeText(getApplicationContext(), "Claim submitted.", Toast.LENGTH_LONG).show();
                             try {
@@ -148,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
                             }
                             globalState.set_claimItemList(_claimItemList);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Claim not submitted.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Claim not submitted. Waiting for server Validation", Toast.LENGTH_LONG).show();
                         }
                     } catch (ExecutionException e) {
                         e.printStackTrace();

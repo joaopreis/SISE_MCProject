@@ -63,12 +63,12 @@ public class NewClaimActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
         final Button cancelButton=findViewById(R.id.newClaimCancelButton);
         final Button submitButton=findViewById(R.id.newClaimSubmitButton);
         final EditText editClaimTitle=findViewById(R.id.claimTitle);
         final Spinner editPlateNumber=findViewById(R.id.newClaimPlateNumber);
+        final EditText editClaimDescription=findViewById(R.id.claimDescription);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, plates);
         editPlateNumber.setAdapter(adapter);
         editPlateNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -83,9 +83,6 @@ public class NewClaimActivity extends AppCompatActivity {
 
             }
         });
-
-        final EditText editClaimDescription=findViewById(R.id.claimDescription);
-
 
         mDisplayDate = (TextView) findViewById(R.id.claimDate);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
