@@ -74,8 +74,7 @@ public class LogInActivity extends AppCompatActivity {
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // create separate AsynkTasks that behave differently for each request in different app
+                
                 try {
                     int id=new WSLogIn(username.getText().toString(),password.getText().toString()).execute().get();
                     Log.d("SISE","ID VALUE:"+id);

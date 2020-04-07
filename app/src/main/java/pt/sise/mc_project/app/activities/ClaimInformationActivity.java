@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
@@ -61,8 +62,16 @@ public class ClaimInformationActivity extends AppCompatActivity {
         GlobalState context = (GlobalState) getApplicationContext();
         ClaimItem claim = context.get_claimItemList().get(index);
         try {
-            ClaimRecord claimRecord=new WSClaimInfo(context.get_sessionId(),claim.getId()).execute().get();
+            ClaimRecord claimRecord=new WSClaimInfo(context.get_sessionId(),claim.getId(),context.get_username(),ClaimInformationActivity.this).execute().get();
             this._claimRecord=claimRecord;
+            Log.d("SISE","claim Record" +_claimRecord);
+            if (_claimRecord==null){
+                Log.d("SISE","I am here");
+                Toast.makeText(getApplicationContext(),"Information not available. Server is down.", Toast.LENGTH_LONG).show();
+                setResult(Activity.RESULT_OK);
+                finish();
+                return;
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

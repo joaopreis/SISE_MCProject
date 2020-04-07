@@ -27,6 +27,8 @@ import java.util.concurrent.ExecutionException;
 
 import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.InternalProtocol;
+import pt.sise.mc_project.JsonCodec;
+import pt.sise.mc_project.JsonFileManager;
 import pt.sise.mc_project.R;
 import pt.sise.mc_project.app.WSListPlates;
 
@@ -38,21 +40,30 @@ public class NewClaimActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new_claim);
+        Log.d("SISE","New Claim Activity Created.");
 
         GlobalState globalstate=(GlobalState) getApplicationContext();
         int _sessionId=globalstate.get_sessionId();
+        String _username=globalstate.get_username();
         List<String> plates = null;
 
         try {
-            plates=new WSListPlates(_sessionId).execute().get();
+            plates=new WSListPlates(_sessionId,_username,NewClaimActivity.this).execute().get();
+            if (plates==null){
+                Toast.makeText(getApplicationContext(),"Impossible to access plates list.",Toast.LENGTH_LONG).show();
+                setResult(Activity.RESULT_CANCELED);
+                finish();
+                return;
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_claim);
-        Log.d("SISE","New Claim Activity Created.");
+
+
 
         final Button cancelButton=findViewById(R.id.newClaimCancelButton);
         final Button submitButton=findViewById(R.id.newClaimSubmitButton);

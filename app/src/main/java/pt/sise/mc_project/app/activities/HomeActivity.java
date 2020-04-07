@@ -1,13 +1,16 @@
 package pt.sise.mc_project.app.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -30,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     private GlobalState globalState;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         final Button newClaimButton = findViewById(R.id.homeNewClaimButton);
         final Button claimsInformationButton = findViewById(R.id.homeClaimsInformationButton);
         final Button settingsButton = findViewById(R.id.homeSettingsButton);
+        //final ProgressBar pb= (ProgressBar) findViewById(R.id.homeProgressBar);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,14 +73,18 @@ public class HomeActivity extends AppCompatActivity {
 
                     Log.d("SISE", _sessionId + "");
                     Customer customer = new WSCustomerInfo(_sessionId,_username,HomeActivity.this).execute().get();
-                    Log.d("SISE", customer.toString());
-                    Intent intent = new Intent(HomeActivity.this, PersonalInformationActivity.class);
-                    intent.putExtra(InternalProtocol.CUSTOMER_NAME, customer.getName());
-                    intent.putExtra(InternalProtocol.CUSTOMER_BIRTHDATE, customer.getDateOfBirth());
-                    intent.putExtra(InternalProtocol.CUSTOMER_NIF, customer.getFiscalNumber() + "");
-                    intent.putExtra(InternalProtocol.CUSTOMER_ADDRESS, customer.getAddress());
-                    intent.putExtra(InternalProtocol.CUSTOMER_POLICY_NUMBER, customer.getPolicyNumber() + "");
-                    startActivity(intent);
+                    if (customer==null){
+                        Toast.makeText(getApplicationContext(),"Information not available. Server is down",Toast.LENGTH_LONG).show();
+                    }else {
+                        Log.d("SISE", customer.toString());
+                        Intent intent = new Intent(HomeActivity.this, PersonalInformationActivity.class);
+                        intent.putExtra(InternalProtocol.CUSTOMER_NAME, customer.getName());
+                        intent.putExtra(InternalProtocol.CUSTOMER_BIRTHDATE, customer.getDateOfBirth());
+                        intent.putExtra(InternalProtocol.CUSTOMER_NIF, customer.getFiscalNumber() + "");
+                        intent.putExtra(InternalProtocol.CUSTOMER_ADDRESS, customer.getAddress());
+                        intent.putExtra(InternalProtocol.CUSTOMER_POLICY_NUMBER, customer.getPolicyNumber() + "");
+                        startActivity(intent);
+                    }
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -146,7 +155,7 @@ public class HomeActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    //_claimItemList.add(claimItem);
+
                 } else if (resultCode == Activity.RESULT_CANCELED) {
                     Log.d(InternalProtocol.LOG, "Cancel pressed.");
                 } else {
