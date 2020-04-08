@@ -3,9 +3,6 @@ package pt.sise.mc_project.app;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.JsonCodec;
 import pt.sise.mc_project.JsonFileManager;

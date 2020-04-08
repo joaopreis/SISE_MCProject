@@ -1,16 +1,13 @@
 package pt.sise.mc_project.app.activities;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -49,12 +46,11 @@ public class HomeActivity extends AppCompatActivity {
         _sessionId = globalState.get_sessionId();
         _username = globalState.get_username();
 
-        //
+
         final Button profileButton = findViewById(R.id.homePersonalInformationButton);
         final Button newClaimButton = findViewById(R.id.homeNewClaimButton);
         final Button claimsInformationButton = findViewById(R.id.homeClaimsInformationButton);
         final Button settingsButton = findViewById(R.id.homeSettingsButton);
-        //final ProgressBar pb= (ProgressBar) findViewById(R.id.homeProgressBar);
 
         // Process Claims
         String claimUnprocessedFile = "ClaimUnprocessed"+ _username + ".json";
