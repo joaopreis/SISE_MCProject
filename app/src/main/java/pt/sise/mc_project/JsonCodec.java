@@ -54,6 +54,25 @@ public class JsonCodec {
         return jsonCustomerInfo.toString();
     }
 
+    public static String encodeLogOut(int sessionId) throws JSONException {
+
+        JSONObject jsonLogOutInfo=new JSONObject();
+        jsonLogOutInfo.put("sessionId",sessionId);
+        Log.i(TAG, "decodeLogOutInfo:" + jsonLogOutInfo.toString());
+        return jsonLogOutInfo.toString();
+    }
+
+    public static int decodeLogOut(String jsonResult){
+        int sessionId=0;
+        try{
+            JSONObject jsonRootObject=new JSONObject(jsonResult);
+            sessionId=Integer.parseInt(jsonRootObject.getString("sessionId"));
+        }catch (JSONException e) {
+            Log.d(TAG, "decodeLogOut" + jsonResult);
+        }
+        return sessionId;
+    }
+
     public static ClaimRecord decodeClaimRecord(String jsonResult) {
         ClaimRecord claimRecord = null;
         Log.i(TAG, "decodeClaimRecord:" + jsonResult);

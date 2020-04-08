@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
+import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.InternalProtocol;
 import pt.sise.mc_project.R;
 import pt.sise.mc_project.app.WSLogOut;
@@ -27,10 +28,12 @@ public class SettingsActivity extends AppCompatActivity {
         Log.d("SISE", "Settings Activity Created.");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        final GlobalState _globalState=(GlobalState) getApplicationContext();
 
         Intent intent=getIntent();
 
         final int _sessionId=intent.getIntExtra(InternalProtocol.SESSION_ID,0);
+        final String _username=intent.getStringExtra(InternalProtocol.USERNAME);
 
         buttonBack = (Button) findViewById(R.id.settingsBackButton);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +49,13 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    boolean result=new WSLogOut(_sessionId).execute().get();
+                    boolean result=new WSLogOut(_sessionId,_username, _globalState.get_logInContext()).execute().get();
                     if(result){
-                        Intent intent = new Intent();
                         Toast.makeText(getApplicationContext(),"Log out successful",Toast.LENGTH_LONG).show();
                         setResult(Activity.RESULT_OK);
                         finish();
                     }else{
+                        setResult(Activity.RESULT_OK);
                         finish(); ////// para alterar após tirar dúvida com o prof
                     }
                 } catch (ExecutionException e) {

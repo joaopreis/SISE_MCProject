@@ -6,7 +6,8 @@ public class InternalProtocol {
 
     public static final String SESSION_ID = "SESSION_ID";
     public static final int LOG_OUT_REQUEST = 2;
-    public static final String LOG_OUT_RESULT = "LOG_OUT_RESULT";
+    public static final String USERNAME = "USERNAME";
+    public static final String CONTEXT = "CONTEXT";
 
     // relevant for the new claim activity
     public static final int    NEW_CLAIM_REQUEST   = 1;

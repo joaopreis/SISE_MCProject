@@ -2,6 +2,9 @@ package pt.sise.mc_project.app;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
+
+import java.util.List;
 
 import pt.sise.mc_project.GlobalState;
 import pt.sise.mc_project.JsonCodec;

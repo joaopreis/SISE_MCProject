@@ -12,11 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
 import java.util.concurrent.ExecutionException;
 
 import pt.sise.mc_project.GlobalState;
+import pt.sise.mc_project.JsonCodec;
+import pt.sise.mc_project.JsonFileManager;
 import pt.sise.mc_project.R;
+import pt.sise.mc_project.app.WSHelper;
 import pt.sise.mc_project.app.WSLogIn;
+import pt.sise.mc_project.app.WSLogOut;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -67,6 +72,8 @@ public class LogInActivity extends AppCompatActivity {
         logInButton= (Button) findViewById(R.id.log_in_button);
 
 
+
+
         username.addTextChangedListener(textWatcher);
         password.addTextChangedListener(textWatcher);
         checkFieldsForEmptyValues();
@@ -76,6 +83,19 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 
                 try {
+                    String fileName="logOut"+username.getText().toString()+".json";
+                    try{
+                        String logOutJson=JsonFileManager.jsonReadFromFile(globalState.get_logInContext(),fileName);
+                        Log.d("SISE","Não cheguei aqui.");
+                        int jsonLogOut= JsonCodec.decodeLogOut(logOutJson);
+                        Log.d("SISE","O erro é aqui??");
+                        new WSLogOut(jsonLogOut,username.getText().toString(),globalState.get_logInContext());
+                        Log.d("SISE","O erro é aqui aqui??");
+                        LogInActivity.this.deleteFile(fileName);
+                        Log.d("SISE","Ou é aqui??");
+                    }catch (Exception e){
+                        Log.d("SISE","Não me encontraram.");
+                    }
                     int id=new WSLogIn(username.getText().toString(),password.getText().toString()).execute().get();
                     Log.d("SISE","ID VALUE:"+id);
                     if (id==0) {
@@ -88,12 +108,14 @@ public class LogInActivity extends AppCompatActivity {
                         _sessionId=id;
                         globalState.set_sessionId(_sessionId);
                         globalState.set_username(username.getText().toString());
+                        globalState.set_password(password.getText().toString());
+                        globalState.set_logInContext(LogInActivity.this);
                         startActivity(intent);
                     }
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (ExecutionException a) {
+                    a.printStackTrace();
+                } catch (InterruptedException b) {
+                    b.printStackTrace();
                 }
 
                 username.setText("");

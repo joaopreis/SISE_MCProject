@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import pt.sise.mc_project.JsonCodec;
 import pt.sise.mc_project.JsonFileManager;
 import pt.sise.mc_project.app.WSCustomerInfo;
+import pt.sise.mc_project.app.WSHello;
 import pt.sise.mc_project.app.WSListClaims;
 import pt.sise.mc_project.app.WSNewClaim;
 import pt.sise.mc_project.datamodel.ClaimItem;
@@ -32,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
     private String _username;
     private GlobalState globalState;
 
-    //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,9 +87,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     Log.d("SISE", _sessionId + "");
                     Customer customer = new WSCustomerInfo(_sessionId,_username,HomeActivity.this).execute().get();
-                    if (customer==null){
-                        Toast.makeText(getApplicationContext(),"Information not available. Server is down",Toast.LENGTH_LONG).show();
-                    }else {
+                    if (customer!=null){
                         Log.d("SISE", customer.toString());
                         Intent intent = new Intent(HomeActivity.this, PersonalInformationActivity.class);
                         intent.putExtra(InternalProtocol.CUSTOMER_NAME, customer.getName());
@@ -134,9 +133,41 @@ public class HomeActivity extends AppCompatActivity {
                 Log.d("SISE", "Settings Button Clicked.");
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 intent.putExtra(InternalProtocol.SESSION_ID,_sessionId);
+                intent.putExtra(InternalProtocol.USERNAME,_username);
                 startActivityForResult(intent,InternalProtocol.LOG_OUT_REQUEST);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String claimUnprocessedFile = "ClaimUnprocessed"+ _username + ".json";
+        try {
+            boolean online= new WSHello().execute().get();
+            if (online) {
+                String claimUnprocessedJson = JsonFileManager.jsonReadFromFile(HomeActivity.this, claimUnprocessedFile);
+                List<ClaimUnprocessed> JsonclaimUnprocessed = JsonCodec.decodeClaimUnprocessed(claimUnprocessedJson);
+                for (int i = 0; i < JsonclaimUnprocessed.size(); i++) {
+                    ClaimUnprocessed claimUnpr = JsonclaimUnprocessed.get(i);
+                    new WSNewClaim(claimUnpr.get_title(), claimUnpr.get_date(), claimUnpr.get_plateNumber(), claimUnpr.get_description(), _sessionId, globalState, HomeActivity.this).execute();
+                }
+                try {
+                    _claimItemList = new WSListClaims(_sessionId).execute().get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                globalState.set_claimItemList(_claimItemList);
+                HomeActivity.this.deleteFile(claimUnprocessedFile);
+                globalState.set_ClaimUnprocessedList(new ArrayList<ClaimUnprocessed>());
+                Toast.makeText(getApplicationContext(), "Your previous claims have been submitted!.", Toast.LENGTH_LONG).show();
+            }
+        }catch (Exception e){
+            Log.d("SISE", "onCreate: No claims to process!");
+        }
+
     }
 
     @Override
